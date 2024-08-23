@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Funcionário</title>
+  <style>
+    /* Estilos para a página */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .status.ativo {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .status.inativo {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Perfil do Funcionário</h1>
+    <div>
+      <h2 id="nome"></h2>
+      <p>E-mail: <span id="email"></span></p>
+      <p>Data de Nascimento: <span id="data-nascimento"></span></p>
+      <p>Cargo: <span id="cargo"></span></p>
+      <p>Departamento: <span id="departamento"></span></p>
+      <p>Status: <span class="status" id="status"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Obter os dados do formulário de cadastro
+    const formData = JSON.parse(localStorage.getItem('formData'));
+
+    // Exibir os dados do funcionário
+    document.getElementById('nome').textContent = formData.nome;
+    document.getElementById('email').textContent = formData.email;
+    document.getElementById('data-nascimento').textContent = formData.dataNascimento;
+    document.getElementById('cargo').textContent = formData.cargo;
+    document.getElementById('departamento').textContent = formData.departamento;
+
+    // Definir o status do funcionário
+    const statusElement = document.getElementById('status');
+    if (formData.ativo) {
+      statusElement.textContent = 'Ativo';
+      statusElement.classList.add('ativo');
+    } else {
+      statusElement.textContent = 'Inativo';
+      statusElement.classList.add('inativo');
+    }
+  </script>
+</body>
+</html>
